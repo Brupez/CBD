@@ -1,0 +1,9 @@
+Starting the output
+Search for ('Enter' for quit): bru
+brunhilda
+brunhilde
+Search for ('Enter' for quit): ines
+ines
+inesita
+inessa
+Search for ('Enter' for quit): 
