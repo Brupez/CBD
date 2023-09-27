@@ -1,0 +1,12 @@
+set key bruno
+get key
+append key lopes
+bgsave
+strlen key
+set key [1,2,3]
+lpush key 0
+rpush key 4
+lindex key 2
+llen key
+lrange key 1 3
+

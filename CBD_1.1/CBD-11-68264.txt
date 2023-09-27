@@ -1,0 +1,27 @@
+get key bruno
+get key value
+set key [1,2,3]
+get key
+clear
+incr key
+bgsave key
+get key
+bgsave
+flushdb
+get key
+set key 1
+incr key
+decr key
+incrby 3
+incrby 3 key 
+incrby key 3 
+exits key
+exits
+exists key
+del key
+get key
+set key bruno
+type key
+rename key lopes
+gey key
+get key
