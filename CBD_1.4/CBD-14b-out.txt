@@ -1,7 +1,0 @@
-Starting the output
-Search for ('Enter' for quit): brun
-bruna
-bruno
-Search for ('Enter' for quit): ines
-inesa
-Search for ('Enter' for quit): 

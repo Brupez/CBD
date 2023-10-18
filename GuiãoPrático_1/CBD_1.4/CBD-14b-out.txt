@@ -1,0 +1,32 @@
+Starting the output
+Search for ('Enter' for quit): in
+india
+indira
+inara
+inaaya
+ino
+inna
+ingrid
+inga
+inesa
+india-rose
+inajé
+inaara
+Search for ('Enter' for quit): bru
+bruna
+bruno
+brudy
+bruce
+Search for ('Enter' for quit): pe
+pedro
+petra
+penélope
+perla
+petru
+petro
+petelson
+petar
+persília
+pepe
+pendasecka
+Search for ('Enter' for quit): 

@@ -1,0 +1,8 @@
+test> db.phones.aggregate({ $group: {_id: "$components.prefix", count: {$sum : 1}}} );
+[
+  { _id: 234, count: 33381 },
+  { _id: 21, count: 33279 },
+  { _id: 232, count: 33325 },
+  { _id: 233, count: 33503 },
+  { _id: 231, count: 33380 },
+  { _id: 22, count: 33132 }

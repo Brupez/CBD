@@ -1,0 +1,23 @@
+Starting the output
+Username: Bruno
+Product: Sapatas
+Pedido efectuado com sucesso.
+Bruno orders: 
+[Bruno, Sapatas, Sun Oct 15 16:43:50 WEST 2023]
+Username: Bruno
+Product: Calças
+Pedido efectuado com sucesso.
+Bruno orders: 
+[Bruno, Sapatas, Sun Oct 15 16:43:50 WEST 2023]
+[Bruno, Calças, Sun Oct 15 16:44:07 WEST 2023]
+Username: André
+Product: Tabaco
+Pedido efectuado com sucesso.
+André orders: 
+[André, Tabaco, Sun Oct 15 16:44:14 WEST 2023]
+Username: Bruno
+Product: calças
+Pedido exedeu limite de pedidos para esta timeslot
+Bruno orders: 
+[Bruno, Sapatas, Sun Oct 15 16:43:50 WEST 2023]
+[Bruno, Calças, Sun Oct 15 16:44:07 WEST 2023]

@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="9cccd467-fc42-4b8c-bac2-2c42665634e1" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/../../CBD_1.6/.idea/CBD_1.6.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../CBD_1.6/out/production/CBD_1.6/.idea/CBD_1.6.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../.idea/GuiãoPrático_2.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Ex2_3/.idea/Ex2_3.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Ex2_3/CBD_L203-out_68264.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Ex2_3/Ex2_3d/src/main/resources/log4j2.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/jarRepositories.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/pt/ua/cbd/alinea_b.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/log4j2.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../restaurants/restaurants/src/main/resources/log4j2.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../CBD_1.3/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../CBD_1.3/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../CBD_1.4/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../CBD_1.4/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../CBD_1.4/CBD-14b-out.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../../CBD_1.4/CBD-14b-out.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../CBD_1.5/src/alinea_B.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../CBD_1.5/src/alinea_B.java" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../.." />
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 0
+}</component>
+  <component name="ProjectId" id="2WdPCVD9SLKwx6qTC3dhHetjVBG" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/home/bruno/Desktop/CBD/Práticas/CBD_1.4/src/alinea_A/autocomplete.java&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  }
+}</component>
+  <component name="RecentsManager">
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="pt.ua.cbd" />
+    </key>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="9cccd467-fc42-4b8c-bac2-2c42665634e1" name="Changes" comment="" />
+      <created>1697059356707</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1697059356707</updated>
+      <workItem from="1697059357699" duration="23000" />
+      <workItem from="1697059392436" duration="66000" />
+      <workItem from="1697059471907" duration="33000" />
+      <workItem from="1697059521980" duration="1133000" />
+      <workItem from="1697060666325" duration="231000" />
+      <workItem from="1697060925693" duration="19000" />
+      <workItem from="1697061078077" duration="32000" />
+      <workItem from="1697061140251" duration="3751000" />
+      <workItem from="1697098793503" duration="2335000" />
+      <workItem from="1697101154881" duration="4000" />
+      <workItem from="1697101371376" duration="55000" />
+      <workItem from="1697101430048" duration="4000" />
+      <workItem from="1697101749971" duration="26000" />
+      <workItem from="1697101814724" duration="251000" />
+      <workItem from="1697102105597" duration="2640000" />
+      <workItem from="1697105470244" duration="440000" />
+      <workItem from="1697368111791" duration="6815000" />
+      <workItem from="1697381689150" duration="6907000" />
+      <workItem from="1697470365277" duration="2581000" />
+      <workItem from="1697473479236" duration="12000" />
+      <workItem from="1697473518305" duration="62000" />
+      <workItem from="1697473598466" duration="9000" />
+      <workItem from="1697473807418" duration="14000" />
+      <workItem from="1697473833998" duration="6000" />
+      <workItem from="1697474009333" duration="39000" />
+      <workItem from="1697474128605" duration="15000" />
+      <workItem from="1697477464270" duration="1155000" />
+      <workItem from="1697548103489" duration="35000" />
+      <workItem from="1697568548994" duration="186000" />
+      <workItem from="1697623815553" duration="29000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+</project>

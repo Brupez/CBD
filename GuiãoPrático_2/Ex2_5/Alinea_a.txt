@@ -1,0 +1,11 @@
+A função populatedPhones gera documentos dentro de um intervalo de números dados pelo utilizador (start e stop) antecedido de um country number que pode ser qualquer um (até números negativos).
+
+Com o for é criado um prefix aleatório entre 0 e 6 e o "<< 0" converte este número para um int. Este prefix é referente ao index dentro do array prefixes para escolher aleatorimente um dos seguintes números [21, 22, 231, 232, 233, 234 ].
+
+O var num pega no prefix e multiplica por 1e9 certificando que este contém 9 números e depois basta adicionar o index country number respetivo. 
+
+Inserta na base dados os id's com o prefix e o número gerado respetivamente (var num), insere um array com três componentes (country, prefix, number) e faz o display do número total.
+
+Se o start for maior que o stop a função não insere os documentos.
+
+Se o start for negativo o var num decresce para 9999999, 9999998 e assim sucessivamente.

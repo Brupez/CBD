@@ -1,0 +1,7 @@
+Insert My User: Insert Follow User: bruno write a Post: 
+message added to db!
+Insert My User: Insert Follow User: ines write a Post: 
+message added to db!
+Insert My User: Insert Follow User: bruno write a Post: 
+message added to db!
+Insert My User: Must insert your UserName!

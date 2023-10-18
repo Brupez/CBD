@@ -1,0 +1,214 @@
+
+test> db.phones.find()
+[
+  {
+    _id: 351231000001,
+    components: { country: 351, prefix: 231, number: 1 },
+    display: '+351-231000001'
+  },
+  {
+    _id: 351234000002,
+    components: { country: 351, prefix: 234, number: 2 },
+    display: '+351-234000002'
+  },
+  {
+    _id: 351234000003,
+    components: { country: 351, prefix: 234, number: 3 },
+    display: '+351-234000003'
+  },
+  {
+    _id: 351233000004,
+    components: { country: 351, prefix: 233, number: 4 },
+    display: '+351-233000004'
+  },
+  {
+    _id: 351231000005,
+    components: { country: 351, prefix: 231, number: 5 },
+    display: '+351-231000005'
+  },
+  {
+    _id: 351210000006,
+    components: { country: 351, prefix: 21, number: 6 },
+    display: '+351-210000006'
+  },
+  {
+    _id: 351234000007,
+    components: { country: 351, prefix: 234, number: 7 },
+    display: '+351-234000007'
+  },
+  {
+    _id: 351231000008,
+    components: { country: 351, prefix: 231, number: 8 },
+    display: '+351-231000008'
+  },
+  {
+    _id: 351232000009,
+    components: { country: 351, prefix: 232, number: 9 },
+    display: '+351-232000009'
+  },
+  {
+    _id: 351220000010,
+    components: { country: 351, prefix: 22, number: 10 },
+    display: '+351-220000010'
+  },
+  {
+    _id: 351210000011,
+    components: { country: 351, prefix: 21, number: 11 },
+    display: '+351-210000011'
+  },
+  {
+    _id: 351220000012,
+    components: { country: 351, prefix: 22, number: 12 },
+    display: '+351-220000012'
+  },
+  {
+    _id: 351220000013,
+    components: { country: 351, prefix: 22, number: 13 },
+    display: '+351-220000013'
+  },
+  {
+    _id: 351233000014,
+    components: { country: 351, prefix: 233, number: 14 },
+    display: '+351-233000014'
+  },
+  {
+    _id: 351220000015,
+    components: { country: 351, prefix: 22, number: 15 },
+    display: '+351-220000015'
+  },
+  {
+    _id: 351210000016,
+    components: { country: 351, prefix: 21, number: 16 },
+    display: '+351-210000016'
+  },
+  {
+    _id: 351234000017,
+    components: { country: 351, prefix: 234, number: 17 },
+    display: '+351-234000017'
+  },
+  {
+    _id: 351232000018,
+    components: { country: 351, prefix: 232, number: 18 },
+    display: '+351-232000018'
+  },
+  {
+    _id: 351233000019,
+    components: { country: 351, prefix: 233, number: 19 },
+    display: '+351-233000019'
+  },
+  {
+    _id: 351233000020,
+    components: { country: 351, prefix: 233, number: 20 },
+    display: '+351-233000020'
+  }
+]
+Type "it" for more
+test> db.phones.count()
+DeprecationWarning: Collection.count() is deprecated. Use countDocuments or estimatedDocumentCount.
+200000
+
+test> db.phones.find( { "components.prefix": 233} )
+[
+  {
+    _id: 351233000004,
+    components: { country: 351, prefix: 233, number: 4 },
+    display: '+351-233000004'
+  },
+  {
+    _id: 351233000014,
+    components: { country: 351, prefix: 233, number: 14 },
+    display: '+351-233000014'
+  },
+  {
+    _id: 351233000019,
+    components: { country: 351, prefix: 233, number: 19 },
+    display: '+351-233000019'
+  },
+  {
+    _id: 351233000020,
+    components: { country: 351, prefix: 233, number: 20 },
+    display: '+351-233000020'
+  },
+  {
+    _id: 351233000021,
+    components: { country: 351, prefix: 233, number: 21 },
+    display: '+351-233000021'
+  },
+  {
+    _id: 351233000023,
+    components: { country: 351, prefix: 233, number: 23 },
+    display: '+351-233000023'
+  },
+  {
+    _id: 351233000030,
+    components: { country: 351, prefix: 233, number: 30 },
+    display: '+351-233000030'
+  },
+  {
+    _id: 351233000036,
+    components: { country: 351, prefix: 233, number: 36 },
+    display: '+351-233000036'
+  },
+  {
+    _id: 351233000039,
+    components: { country: 351, prefix: 233, number: 39 },
+    display: '+351-233000039'
+  },
+  {
+    _id: 351233000047,
+    components: { country: 351, prefix: 233, number: 47 },
+    display: '+351-233000047'
+  },
+  {
+    _id: 351233000058,
+    components: { country: 351, prefix: 233, number: 58 },
+    display: '+351-233000058'
+  },
+  {
+    _id: 351233000063,
+    components: { country: 351, prefix: 233, number: 63 },
+    display: '+351-233000063'
+  },
+  {
+    _id: 351233000067,
+    components: { country: 351, prefix: 233, number: 67 },
+    display: '+351-233000067'
+  },
+  {
+    _id: 351233000071,
+    components: { country: 351, prefix: 233, number: 71 },
+    display: '+351-233000071'
+  },
+  {
+    _id: 351233000072,
+    components: { country: 351, prefix: 233, number: 72 },
+    display: '+351-233000072'
+  },
+  {
+    _id: 351233000087,
+    components: { country: 351, prefix: 233, number: 87 },
+    display: '+351-233000087'
+  },
+  {
+    _id: 351233000096,
+    components: { country: 351, prefix: 233, number: 96 },
+    display: '+351-233000096'
+  },
+  {
+    _id: 351233000102,
+    components: { country: 351, prefix: 233, number: 102 },
+    display: '+351-233000102'
+  },
+  {
+    _id: 351233000109,
+    components: { country: 351, prefix: 233, number: 109 },
+    display: '+351-233000109'
+  },
+  {
+    _id: 351233000113,
+    components: { country: 351, prefix: 233, number: 113 },
+    display: '+351-233000113'
+  }
+]
+Type "it" for more
+
