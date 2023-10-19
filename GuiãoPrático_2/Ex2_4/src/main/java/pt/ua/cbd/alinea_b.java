@@ -5,12 +5,14 @@ import com.mongodb.client.*;
 import com.mongodb.client.model.Accumulators;
 import com.mongodb.client.model.Aggregates;
 import com.mongodb.client.model.Filters;
+import com.mongodb.client.model.Projections;
 import com.mongodb.client.result.InsertOneResult;
 import org.bson.Document;
 import org.bson.conversions.Bson;
 
 import java.io.*;
 import java.util.*;
+import java.util.concurrent.atomic.AtomicInteger;
 
 import static com.mongodb.client.model.Filters.*;
 import static com.mongodb.client.model.Projections.exclude;
@@ -59,22 +61,24 @@ public class alinea_b {
 
                 message = orderRequest(collection, username, product, quantity);
 
-                if (quantity > limit){
+                if (quantity > limit) {
                     outputFile("Número de pedidos excedido! Only order a total of 10 products.", pw, true);
                     break;
                 }
 
+
                 collection.aggregate(
                         Arrays.asList(
                                 Aggregates.match(Filters.eq("username", username)),
-                                Aggregates.group("product", Accumulators.sum("_quantity", "$" + quantity))
+                                Aggregates.group("$product", Accumulators.sum("_quantity", "$quantity"))
                         )
                 ).forEach(document1 -> System.out.println(document1.toJson()));
 
                 outputFile(message, pw, true);
 
                 Bson filterUser = Filters.eq("username", username);
-                Bson projection = exclude("_id");;
+                Bson projection = exclude("_id");
+                ;
 
                 outputFile(username + " orders: ", pw, true);
                 collection.find(filterUser).projection(projection).forEach(doc ->
@@ -86,7 +90,7 @@ public class alinea_b {
         } catch (IOException e) {
             e.printStackTrace();
         }
-}
+    }
 
     public static String orderRequest(MongoCollection<Document> collection, String username, String product, int quantity) {
         Calendar now = Calendar.getInstance();
@@ -95,50 +99,32 @@ public class alinea_b {
         Date minDate = now.getTime();
 
 
-        //Ir à BD buscar count pedidos deste username com data igual ou superior a minDate
-        long RequestsCountInTimeslot = collection.countDocuments(and(eq("username",username), gte("timestamp", minDate)));
+        //Ir à BD buscar sum quantidades pedidos deste username com data igual ou superior a minDate
+        AtomicInteger sum = new AtomicInteger(0);
+        collection.find(Filters.and(eq("username", username), gte("timestamp", minDate))).forEach(doc -> {
+            sum.addAndGet(Integer.parseInt(doc.get("quantity").toString()));
+        });
 
-        if( RequestsCountInTimeslot < limit && quantity < limit) {
+        if (quantity <= limit && sum.get() + quantity <= limit) {
 
-            List productsList = new ArrayList<>();
-            //productsList.add(product);
-            //productsList.add(quantity);
-
-
-            Document doc1 = new Document("username", username).append("products", productsList).append("timestamp", new Date());
-            Document query = new Document("product", product);
-
-            long count = collection.countDocuments(query);
-
-            if (count > 0){
-                int totalQuantity = quantity;
-                totalQuantity += quantity;
-                productsList.add(totalQuantity);
-                System.out.println("Quantidade somada");
-            }
-            else {
-                productsList.add(product);
-                productsList.add(quantity);
-            }
+            Document doc1 = new Document("username", username).append("product", product).append("quantity", quantity).append("timestamp", new Date());
             InsertOneResult result = collection.insertOne(doc1);
 
             System.out.println("Inserted a document with the following id: "
                     + result.getInsertedId().asObjectId().getValue());
             return "Pedido efectuado com sucesso.";
-        }
-        else {
+        } else {
             return "Pedido excedeu limite de pedidos para esta timeslot!";
         }
 
     }
 
-    public static void outputFile(String s, PrintWriter pw, boolean println){
+    public static void outputFile(String s, PrintWriter pw, boolean println) {
 
         if (println) {
             System.out.println(s);
             pw.println(s);
-        }
-        else {
+        } else {
             System.out.print(s);
             pw.print(s);
         }

@@ -1,0 +1,36 @@
+Starting the output
+Username: a
+Product: a
+Quantity of that product: 5
+Pedido efectuado com sucesso.
+a orders: 
+[a, a, 5, Wed Oct 18 21:39:22 WEST 2023]
+Username: a
+Product: b
+Quantity of that product: 5
+Pedido efectuado com sucesso.
+a orders: 
+[a, a, 5, Wed Oct 18 21:39:22 WEST 2023]
+[a, b, 5, Wed Oct 18 21:39:29 WEST 2023]
+Username: b
+Product: a
+Quantity of that product: 10
+Pedido efectuado com sucesso.
+b orders: 
+[b, a, 10, Wed Oct 18 21:39:49 WEST 2023]
+Username: a
+Product: a
+Quantity of that product: 1
+Pedido excedeu limite de pedidos para esta timeslot!
+a orders: 
+[a, a, 5, Wed Oct 18 21:39:22 WEST 2023]
+[a, b, 5, Wed Oct 18 21:39:29 WEST 2023]
+Username: b
+Product: a
+Quantity of that product: 1
+Pedido excedeu limite de pedidos para esta timeslot!
+b orders: 
+[b, a, 10, Wed Oct 18 21:39:49 WEST 2023]
+Username: 
+Product: 
+Quantity of that product: 

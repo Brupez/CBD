@@ -102,18 +102,14 @@ public class App {
 
             AggregateIterable<Document> countLocalidades = collection.aggregate(
                     Arrays.asList(
-                            Aggregates.group("$localidade", Accumulators.sum("count", "$restaurant_id")),
-                            Aggregates.project(Projections.fields(
-                                            Projections.excludeId(),
-                                            Projections.computed("totalField", "$totalField")
-                                    )
-                            )
+                            Aggregates.group("$localidade", Accumulators.sum("count", 1))
                     ));
 
 
-            /*for (Document doc: countLocalidades){
+            for (Document doc: countLocalidades){
+                System.out.println(doc.toJson());
                 listLocalidades.put(doc.getString("_id"), doc.getInteger("count"));
-            }*/
+            }
 
 
             return listLocalidades;

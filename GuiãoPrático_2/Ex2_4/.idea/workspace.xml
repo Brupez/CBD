@@ -5,28 +5,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="9cccd467-fc42-4b8c-bac2-2c42665634e1" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/../../CBD_1.6/.idea/CBD_1.6.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../CBD_1.6/out/production/CBD_1.6/.idea/CBD_1.6.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../.idea/GuiãoPrático_2.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Ex2_3/.idea/Ex2_3.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Ex2_3/CBD_L203-out_68264.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Ex2_3/Ex2_3d/src/main/resources/log4j2.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/jarRepositories.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/pt/ua/cbd/alinea_b.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/log4j2.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../restaurants/restaurants/src/main/resources/log4j2.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../CBD_1.3/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../CBD_1.3/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../CBD_1.4/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../CBD_1.4/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../CBD_1.4/CBD-14b-out.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../../CBD_1.4/CBD-14b-out.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../CBD_1.5/src/alinea_B.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../CBD_1.5/src/alinea_B.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Ex2_3/Ex2_3d/src/main/java/pt/ua/cbd/App.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Ex2_3/Ex2_3d/src/main/java/pt/ua/cbd/App.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Ex2_3/Ex2_3d/target/classes/pt/ua/cbd/App.class" beforeDir="false" afterPath="$PROJECT_DIR$/../Ex2_3/Ex2_3d/target/classes/pt/ua/cbd/App.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CBD_L204b-out_68264.txt" beforeDir="false" afterPath="$PROJECT_DIR$/CBD_L204b-out_68264.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/pt/ua/cbd/alinea_b.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pt/ua/cbd/alinea_b.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/pt/ua/cbd/alinea_b.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/pt/ua/cbd/alinea_b.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Ex2_5/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Ex2_5/.idea/misc.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -106,6 +92,10 @@
       <workItem from="1697548103489" duration="35000" />
       <workItem from="1697568548994" duration="186000" />
       <workItem from="1697623815553" duration="29000" />
+      <workItem from="1697656263793" duration="88000" />
+      <workItem from="1697656481392" duration="4179000" />
+      <workItem from="1697661254931" duration="267000" />
+      <workItem from="1697704648693" duration="36000" />
     </task>
     <servers />
   </component>
