@@ -27,112 +27,8 @@ db.restaurants.find({}, {_id:0, restaurant_id: 1, nome: 1, localidade: 1, gastro
     gastronomia: 'Ice Cream, Gelato, Yogurt, Ices',
     nome: 'Carvel Ice Cream',
     restaurant_id: '40360076'
-  },
-  {
-    localidade: 'Brooklyn',
-    gastronomia: 'Delicatessen',
-    nome: 'Nordic Delicacies',
-    restaurant_id: '40361390'
-  },
-  {
-    localidade: 'Brooklyn',
-    gastronomia: 'Ice Cream, Gelato, Yogurt, Ices',
-    nome: 'Taste The Tropics Ice Cream',
-    restaurant_id: '40356731'
-  },
-  {
-    localidade: 'Brooklyn',
-    gastronomia: 'American',
-    nome: 'Regina Caterers',
-    restaurant_id: '40356649'
-  },
-  {
-    localidade: 'Queens',
-    gastronomia: 'Jewish/Kosher',
-    nome: 'Tov Kosher Kitchen',
-    restaurant_id: '40356068'
-  },
-  {
-    localidade: 'Queens',
-    gastronomia: 'Ice Cream, Gelato, Yogurt, Ices',
-    nome: 'Carvel Ice Cream',
-    restaurant_id: '40361322'
-  },
-  {
-    localidade: 'Queens',
-    gastronomia: 'Delicatessen',
-    nome: "Sal'S Deli",
-    restaurant_id: '40361618'
-  },
-  {
-    localidade: 'Brooklyn',
-    gastronomia: 'American',
-    nome: 'The Movable Feast',
-    restaurant_id: '40361606'
-  },
-  {
-    localidade: 'Manhattan',
-    gastronomia: 'American',
-    nome: 'P & S Deli Grocery',
-    restaurant_id: '40362264'
-  },
-  {
-    localidade: 'Manhattan',
-    gastronomia: 'Delicatessen',
-    nome: "Bully'S Deli",
-    restaurant_id: '40361708'
-  },
-  {
-    localidade: 'Manhattan',
-    gastronomia: 'American',
-    nome: 'Angelika Film Center',
-    restaurant_id: '40362274'
-  },
-  {
-    localidade: 'Queens',
-    gastronomia: 'Delicatessen',
-    nome: "Steve Chu'S Deli & Grocery",
-    restaurant_id: '40361998'
-  },
-  {
-    localidade: 'Brooklyn',
-    gastronomia: 'Hamburgers',
-    nome: 'White Castle',
-    restaurant_id: '40362344'
-  },
-  {
-    localidade: 'Manhattan',
-    gastronomia: 'Chicken',
-    nome: "Harriet'S Kitchen",
-    restaurant_id: '40362098'
-  },
-  {
-    localidade: 'Manhattan',
-    gastronomia: 'Turkish',
-    nome: 'The Country Cafe',
-    restaurant_id: '40362715'
-  },
-  {
-    localidade: 'Manhattan',
-    gastronomia: 'American',
-    nome: 'Glorious Food',
-    restaurant_id: '40361521'
-  },
-  {
-    localidade: 'Brooklyn',
-    gastronomia: 'Caribbean',
-    nome: "Shashemene Int'L Restaura",
-    restaurant_id: '40362869'
-  },
-  {
-    localidade: 'Manhattan',
-    gastronomia: 'American',
-    nome: 'Downtown Deli',
-    restaurant_id: '40363021'
   }
 ]
-Type "it" for more
-
 
 //3. Apresente os campos restaurant_id, nome, localidade e código postal (zipcode), mas
 exclua o campo _id de todos os documentos da coleção.
@@ -1334,7 +1230,7 @@ db.restaurants.find({ "address.coord": { $lt: [-95.7, null]  }})
 
 // 9. Indique os restaurantes que não têm gastronomia "American", tiveram uma (ou
 mais) pontuação superior a 70 e estão numa latitude inferior a -65.
-db.restaurants.find({ gastronomia: { $ne: "American"}, "grades.score": {$gt: 70 }, "address.coord": {$elemMatch: {$lt: -65} }})
+db.restaurants.find({ gastronomia: { $ne: "American"}, "grades.score": {$gt: 70 }, "address.coord.0": {$lt: -65} }})
 [
   {
     _id: ObjectId("6521483fc0353443f84f8a5a"),
@@ -1826,280 +1722,40 @@ db.restaurants.find({localidade: { $in: ["Staten Island", "Queens", "Brooklyn"]}
 
 //13. Liste o nome, a localidade, o score e gastronomia dos restaurantes que alcançaram
 sempre pontuações inferiores ou igual a 3.
-db.restaurants.find({ "grades.score": { $lte: 3 }}, {_id:0,  nome:1, localidade:1, "grades.score":1, gastronomia:1 })
+cbd> db.restaurants.find({ "grades":{ $not: {$elemMatch: {"score": { $gte: 3 }}}}}, {_id:0,  nome:1, localidade:1, "grades.score":1, gastronomia:1 })
 [
   {
     localidade: 'Manhattan',
-    gastronomia: 'Irish',
-    grades: [ { score: 2 }, { score: 11 }, { score: 12 }, { score: 12 } ],
-    nome: 'Dj Reynolds Pub And Restaurant'
-  },
-  {
-    localidade: 'Brooklyn',
-    gastronomia: 'Ice Cream, Gelato, Yogurt, Ices',
-    grades: [
-      { score: 2 },
-      { score: 13 },
-      { score: 3 },
-      { score: 12 },
-      { score: 13 }
-    ],
-    nome: 'Carvel Ice Cream'
-  },
-  {
-    localidade: 'Brooklyn',
-    gastronomia: 'Delicatessen',
-    grades: [ { score: 4 }, { score: 3 }, { score: 10 } ],
-    nome: 'Nordic Delicacies'
-  },
-  {
-    localidade: 'Brooklyn',
-    gastronomia: 'American',
-    grades: [
-      { score: 12 },
-      { score: 12 },
-      { score: 11 },
-      { score: 2 },
-      { score: 11 }
-    ],
-    nome: 'Regina Caterers'
-  },
-  {
-    localidade: 'Brooklyn',
-    gastronomia: 'American',
-    grades: [ { score: 11 }, { score: 2 }, { score: 13 }, { score: 11 } ],
-    nome: 'The Movable Feast'
-  },
-  {
-    localidade: 'Queens',
-    gastronomia: 'Delicatessen',
-    grades: [ { score: 3 }, { score: 12 }, { score: 8 }, { score: 7 } ],
-    nome: "Steve Chu'S Deli & Grocery"
-  },
-  {
-    localidade: 'Brooklyn',
-    gastronomia: 'Hamburgers',
-    grades: [ { score: 8 }, { score: 8 }, { score: 7 }, { score: 2 } ],
-    nome: 'White Castle'
-  },
-  {
-    localidade: 'Brooklyn',
-    gastronomia: 'Caribbean',
-    grades: [ { score: 2 }, { score: 7 }, { score: 11 }, { score: 12 } ],
-    nome: "Shashemene Int'L Restaura"
-  },
-  {
-    localidade: 'Queens',
-    gastronomia: 'Chinese',
-    grades: [
-      { score: 10 },
-      { score: 5 },
-      { score: 12 },
-      { score: 10 },
-      { score: 0 },
-      { score: 13 },
-      { score: 12 },
-      { score: 11 }
-    ],
-    nome: 'Ho Mei Restaurant'
-  },
-  {
-    localidade: 'Brooklyn',
-    gastronomia: 'American',
-    grades: [ { score: 5 }, { score: 2 }, { score: 5 }, { score: 2 } ],
-    nome: 'C & C Catering Service'
-  },
-  {
-    localidade: 'Bronx',
-    gastronomia: 'Bakery',
-    grades: [
-      { score: 2 },
-      { score: 6 },
-      { score: 10 },
-      { score: 9 },
-      { score: 14 }
-    ],
-    nome: 'Morris Park Bake Shop'
+    gastronomia: 'Café/Coffee/Tea',
+    grades: [ { score: 2 }, { score: 2 }, { score: 2 }, { score: 2 } ],
+    nome: 'Cafe Madison'
   },
   {
     localidade: 'Manhattan',
     gastronomia: 'American',
-    grades: [ { score: 3 }, { score: 4 }, { score: 6 }, { score: 0 } ],
-    nome: '1 East 66Th Street Kitchen'
+    grades: [ { score: 2 }, { score: 0 } ],
+    nome: 'Gold Bar B'
   },
-  {
-    localidade: 'Manhattan',
-    gastronomia: 'Bakery',
-    grades: [
-      { score: 11 },
-      { score: 13 },
-      { score: 7 },
-      { score: 7 },
-      { score: 3 }
-    ],
-    nome: "Olive'S"
-  },
-  {
-    localidade: 'Staten Island',
-    gastronomia: 'Delicatessen',
-    grades: [ { score: 3 }, { score: 10 }, { score: 10 }, { score: 11 } ],
-    nome: 'Bagels N Buns'
-  },
-  {
-    localidade: 'Bronx',
-    gastronomia: 'American',
-    grades: [ { score: 11 }, { score: 4 }, { score: 3 } ],
-    nome: 'Wild Asia'
-  },
-  {
-    localidade: 'Manhattan',
-    gastronomia: 'Sandwiches/Salads/Mixed Buffet',
-    grades: [
-      { score: 3 },
-      { score: 3 },
-      { score: 0 },
-      { score: 12 },
-      { score: 5 }
-    ],
-    nome: 'Lexler Deli'
-  },
-  {
-    localidade: 'Staten Island',
-    gastronomia: 'Ice Cream, Gelato, Yogurt, Ices',
-    grades: [ { score: 12 }, { score: 5 }, { score: 2 } ],
-    nome: 'Carvel Ice Cream'
-  },
-  {
-    localidade: 'Brooklyn',
-    gastronomia: 'American',
-    grades: [ { score: 0 }, { score: 3 }, { score: 10 } ],
-    nome: "Sonny'S Heros"
-  },
-  {
-    localidade: 'Manhattan',
-    gastronomia: 'Pizza',
-    grades: [
-      { score: 3 },
-      { score: 11 },
-      { score: 12 },
-      { score: 4 },
-      { score: 2 },
-      { score: 0 }
-    ],
-    nome: "Domino'S Pizza"
-  },
-  {
-    localidade: 'Queens',
-    gastronomia: 'American',
-    grades: [
-      { score: 7 },
-      { score: 11 },
-      { score: 7 },
-      { score: 10 },
-      { score: 0 },
-      { score: 4 }
-    ],
-    nome: 'Snack Time Grill'
-  }
 ]
+
 
 //14. Liste o nome e as avaliações dos restaurantes que obtiveram uma avaliação com
 um grade "A", um score 10 na data "2014-08-11T00: 00: 00Z" (ISODATE).
-db.restaurants.find({"grades.grade":"A", "grades.score":10, "grades.date":ISODate("2014-08-11T00:00:00Z")}, { _id:0, nome: 1, "grades.grade":1})
+cbd> db.restaurants.find( {"grades": { $elemMatch: {"grade":"A", "score":10, "date":ISODate("2014-08-11T00:00:00Z")}}}, { _id:0, nome: 1, "grades.grade":1})
 [
   {
     grades: [ { grade: 'A' }, { grade: 'A' }, { grade: 'A' }, { grade: 'A' } ],
     nome: 'Serendipity 3'
   },
   {
-    grades: [
-      { grade: 'A' },
-      { grade: 'A' },
-      { grade: 'A' },
-      { grade: 'A' },
-      { grade: 'A' },
-      { grade: 'A' }
-    ],
-    nome: "Neary'S Pub"
-  },
-  {
-    grades: [
-      { grade: 'A' },
-      { grade: 'A' },
-      { grade: 'A' },
-      { grade: 'A' },
-      { grade: 'A' },
-      { grade: 'A' }
-    ],
-    nome: 'Pietros'
-  },
-  {
     grades: [ { grade: 'A' }, { grade: 'A' }, { grade: 'A' }, { grade: 'A' } ],
     nome: 'Mutual Of America'
-  },
-  {
-    grades: [
-      { grade: 'A' },
-      { grade: 'A' },
-      { grade: 'A' },
-      { grade: 'A' },
-      { grade: 'A' }
-    ],
-    nome: 'Club Macanudo (Cigar Bar)'
-  },
-  {
-    grades: [
-      { grade: 'A' },
-      { grade: 'B' },
-      { grade: 'C' },
-      { grade: 'C' },
-      { grade: 'C' }
-    ],
-    nome: 'Udon West'
-  },
-  {
-    grades: [
-      { grade: 'A' },
-      { grade: 'A' },
-      { grade: 'B' },
-      { grade: 'A' },
-      { grade: 'A' }
-    ],
-    nome: "Gene'S Coffee Shop"
-  },
-  {
-    grades: [
-      { grade: 'A' },
-      { grade: 'A' },
-      { grade: 'A' },
-      { grade: 'A' },
-      { grade: 'A' },
-      { grade: 'A' },
-      { grade: 'P' }
-    ],
-    nome: 'Union Cafe Restaurant'
-  },
-  {
-    grades: [ { grade: 'A' }, { grade: 'A' }, { grade: 'A' }, { grade: 'A' } ],
-    nome: "Jojo'S Pizza"
-  },
-  {
-    grades: [
-      { grade: 'A' },
-      { grade: 'A' },
-      { grade: 'B' },
-      { grade: 'A' },
-      { grade: 'A' },
-      { grade: 'A' }
-    ],
-    nome: 'Roca Tone Seafood Restaurant'
   }
 ]
 
-
 //15. Liste o restaurant_id, o nome e os score dos restaurantes nos quais a segunda
 avaliação foi grade "A" e ocorreu em ISODATE "2014-08-11T00: 00: 00Z".
-db.restaurants.find({"grades.1.grade":"A", "grades.date":ISODate("2014-08-11T00:00:00Z")}, { restaurant_id:1, nome: 1, "grades.score":1})
+db.restaurants.find({"grades.1.grade":"A", "grades.1.date":ISODate("2014-08-11T00:00:00Z")}, { restaurant_id:1, nome: 1, "grades.score":1})
 [
   {
     _id: ObjectId("6521483fc0353443f84f8893"),
@@ -2287,33 +1943,6 @@ db.restaurants.find({"grades.1.grade":"A", "grades.date":ISODate("2014-08-11T00:
     ],
     nome: 'Roca Tone Seafood Restaurant',
     restaurant_id: '40885478'
-  }
-]
-cbd> db.restaurants.find({"grades.1.grade":"A", "grades.1.date":ISODate("2014-08-11T00:00:00Z")}, { restaurant_id:1, nome: 1, "grades.score":1})
-[
-  {
-    _id: ObjectId("6521483fc0353443f84f8e73"),
-    grades: [
-      { score: 10 },
-      { score: 9 },
-      { score: 13 },
-      { score: 10 },
-      { score: 11 }
-    ],
-    nome: 'Club Macanudo (Cigar Bar)',
-    restaurant_id: '40526406'
-  },
-  {
-    _id: ObjectId("6521483fc0353443f84f9114"),
-    grades: [
-      { score: 9 },
-      { score: 10 },
-      { score: 22 },
-      { score: 5 },
-      { score: 11 }
-    ],
-    nome: "Gene'S Coffee Shop",
-    restaurant_id: '40614916'
   }
 ]
 

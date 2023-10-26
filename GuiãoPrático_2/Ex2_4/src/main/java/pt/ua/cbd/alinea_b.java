@@ -5,7 +5,6 @@ import com.mongodb.client.*;
 import com.mongodb.client.model.Accumulators;
 import com.mongodb.client.model.Aggregates;
 import com.mongodb.client.model.Filters;
-import com.mongodb.client.model.Projections;
 import com.mongodb.client.result.InsertOneResult;
 import org.bson.Document;
 import org.bson.conversions.Bson;
@@ -99,7 +98,7 @@ public class alinea_b {
         Date minDate = now.getTime();
 
 
-        //Ir à BD buscar sum quantidades pedidos deste username com data igual ou superior a minDate
+        //Fetch to the DB sum of orders requested by this specific user with gte of minDate
         AtomicInteger sum = new AtomicInteger(0);
         collection.find(Filters.and(eq("username", username), gte("timestamp", minDate))).forEach(doc -> {
             sum.addAndGet(Integer.parseInt(doc.get("quantity").toString()));

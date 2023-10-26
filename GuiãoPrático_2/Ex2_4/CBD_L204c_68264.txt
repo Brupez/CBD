@@ -1,0 +1,15 @@
+c) Comente, sucintamente, as diferenças conceptuais entre as implementações baseadas em Redis e Mongo. Evidencie quais os prós e contras das duas soluções
+e qual se adequa melhor à solução deste problema. Execute operações (read/write) similares nas duas soluções (Redis e MongoDB), extraindo métricas
+de desempenho, fazendo uma análise crítica dos resultados.
+
+
+-> [Mongo] Na implementação do Mongo para limitar o número de pedidos subtraiu-se ao tempo atual o tempo limite (neste caso 60 minutos) e pegar nesse timestamp fazendo uma query com find() para encontrar todos os pedidos daquele especifico user em que o timestamp era maior ou igual do tempo subtraido. Pegamos no resultado da query e adiconar ao AtomicInteger sum. Já que a quantidade é inserida para cada pedido se a primeira quantidade ou a quantidade total dos produtos ultrapassar o limite de pedidos termina o programa senão insere essa o documento à BD.
+
+-> [Redis] Na implementação em Redis em cada iteração com o programa certificamos que limpamos a bd para não interfir com a interação seguinte (jedis.flushAll()). Jedis é uma API do JAVA para usar o Redis.
+Primeiro verificamos se o user existe na base de dados e se sim adicionar os pedidos a hashmap já que Redis é um modelo de dados de key-values.
+Iteramos pelo hashmap em que as suas keys e values são strings para que se tiver a fazer os pedidos ainda dentro do limite de tempo adiciona o pedido aos pedidos já efetuados (caso haja no passado).
+
+Se tivermos à procura de performance e rapidez na nossa base de dados Redis é a melhor opção que temos já que é um banco de dados que usa memória em disco.
+Em contrapartida se pretendermos ter uma grande quantidade de dados e complexidade o Mongo é a escolha mais adequada sendo uma base de dados orientada a documentos.
+
+ 

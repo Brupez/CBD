@@ -1,0 +1,7 @@
+{
+  "name": "Ex2_5",
+  "version": "1.0.0",
+  "dependencies": {
+    "mongodb": "^6.2.0"
+  }
+}

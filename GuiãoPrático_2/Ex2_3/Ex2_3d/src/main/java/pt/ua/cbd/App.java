@@ -1,7 +1,5 @@
 package pt.ua.cbd;
 
-
-import com.mongodb.Block;
 import com.mongodb.client.*;
 import com.mongodb.client.model.Accumulators;
 import com.mongodb.client.model.Aggregates;
@@ -10,18 +8,15 @@ import com.mongodb.client.model.Projections;
 import org.bson.Document;
 import org.bson.conversions.Bson;
 
-import javax.print.Doc;
 import java.io.*;
 import java.util.*;
-
-import static com.mongodb.client.model.Projections.include;
 
 public class App {
     public static void main(String[] args) {
         String uri = "mongodb://127.0.0.1:27017/?directConnection=true&serverSelectionTimeoutMS=2000";
 
-        try (MongoClient mongoClient = MongoClients.create(uri); FileWriter fileWriter = new FileWriter("CBD_L203-out_68264.txt");
-             PrintWriter pw = new PrintWriter(new FileWriter("CBD_L203-out_68264.txt"))) {
+        try (MongoClient mongoClient = MongoClients.create(uri); FileWriter fileWriter = new FileWriter("CBD_L203_68264.txt");
+             PrintWriter pw = new PrintWriter(new FileWriter("CBD_L203_68264.txt"))) {
 
             MongoDatabase database = mongoClient.getDatabase("cbd");
             MongoCollection<Document> collection = database.getCollection("restaurants");
@@ -31,9 +26,12 @@ public class App {
             outputFile("Número de localidades distintas: " + countlocalidades(), pw, true);
             outputFile("---------------------------------------", pw, true);
 
-            Map<String, Integer> localCount = countRestByLocalidade();
 
             outputFile("Número de restaurantes por localidade:", pw, true);
+            Map<String, Integer> localCounts = countRestByLocalidade();
+            for (Map.Entry<String, Integer> entry : localCounts.entrySet()){
+                outputFile("-> " + entry.getKey() + " - " + entry.getValue(), pw, true);
+            }
 
             AggregateIterable<Document> countLocalidades = collection.aggregate(
                     Arrays.asList(
@@ -45,11 +43,6 @@ public class App {
                             )
                     )
             );
-            
-
-            /*for (Map.Entry<String, Integer> localidade: localCount.entrySet()){
-                outputFile("-> " + localidade.getKey() + " - " + localidade.getValue(), pw, true);
-            }*/
 
             String name = "Park";
 
@@ -93,7 +86,7 @@ public class App {
 
         String uri = "mongodb://127.0.0.1:27017/?directConnection=true&serverSelectionTimeoutMS=2000";
 
-        try (MongoClient mongoClient = MongoClients.create(uri)) {
+        try (MongoClient mongoClient = MongoClients.create(uri);PrintWriter pw = new PrintWriter(new FileWriter("CBD_L203_68264.txt"))) {
 
             MongoDatabase database = mongoClient.getDatabase("cbd");
             MongoCollection<Document> collection = database.getCollection("restaurants");
@@ -107,12 +100,14 @@ public class App {
 
 
             for (Document doc: countLocalidades){
-                System.out.println(doc.toJson());
                 listLocalidades.put(doc.getString("_id"), doc.getInteger("count"));
+                outputFile("-> " + doc.get("_id") + " - " + doc.get("count"), pw, true);
             }
 
 
             return listLocalidades;
+        } catch (IOException e) {
+            throw new RuntimeException(e);
         }
     }
 
