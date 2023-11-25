@@ -1,0 +1,204 @@
+-- create keyspace
+CREATE KEYSPACE bruno WITH replication = {'class': 'SimpleStrategy', 'replication_factor' : 3};
+
+-- Use Keyspace
+use bruno;
+
+-- describe keyspace
+--OUTPUT
+-- bruno,keyspace,bruno,"CREATE KEYSPACE bruno WITH replication = {'class': 'SimpleStrategy', 'replication_factor': '3'}  AND durable_writes = true;"
+describe bruno;
+
+
+JSON Format
+[
+  {
+    "keyspace_name": "bruno",
+    "type": "table",
+    "name": "emp",
+    "create_statement": "CREATE TABLE bruno.emp (\n    emp_id int PRIMARY KEY,\n    emp_city text,\n    emp_name text,\n    emp_phone varint,\n    emp_sal varint\n) WITH additional_write_policy = '99p'\n    AND bloom_filter_fp_chance = 0.01\n    AND caching = {'keys': 'ALL', 'rows_per_partition': 'NONE'}\n    AND cdc = false\n    AND comment = ''\n    AND compaction = {'class': 'org.apache.cassandra.db.compaction.SizeTieredCompactionStrategy', 'max_threshold': '32', 'min_threshold': '4'}\n    AND compression = {'chunk_length_in_kb': '16', 'class': 'org.apache.cassandra.io.compress.LZ4Compressor'}\n    AND memtable = 'default'\n    AND crc_check_chance = 1.0\n    AND default_time_to_live = 0\n    AND extensions = {}\n    AND gc_grace_seconds = 864000\n    AND max_index_interval = 2048\n    AND memtable_flush_period_in_ms = 0\n    AND min_index_interval = 128\n    AND read_repair = 'BLOCKING'\n    AND speculative_retry = '99p';"
+  }
+]
+
+-- Create Table
+CREATE TABLE emp
+(
+    emp_id    int PRIMARY KEY,
+    emp_name  text,
+    emp_city  text,
+    emp_sal   varint,
+    emp_phone varint
+);
+
+--Describe table
+--OUTPUT
+-- bruno,table,emp,"CREATE TABLE bruno.emp (
+--     emp_id int PRIMARY KEY,
+--     emp_city text,
+--     emp_name text,
+--     emp_phone varint,
+--     emp_sal varint
+-- ) WITH additional_write_policy = '99p'
+--     AND bloom_filter_fp_chance = 0.01
+--     AND caching = {'keys': 'ALL', 'rows_per_partition': 'NONE'}
+--     AND cdc = false
+--     AND comment = ''
+--     AND compaction = {'class': 'org.apache.cassandra.db.compaction.SizeTieredCompactionStrategy', 'max_threshold': '32', 'min_threshold': '4'}
+--     AND compression = {'chunk_length_in_kb': '16', 'class': 'org.apache.cassandra.io.compress.LZ4Compressor'}
+--     AND memtable = 'default'
+--     AND crc_check_chance = 1.0
+--     AND default_time_to_live = 0
+--     AND extensions = {}
+--     AND gc_grace_seconds = 864000
+--     AND max_index_interval = 2048
+--     AND memtable_flush_period_in_ms = 0
+--     AND min_index_interval = 128
+--     AND read_repair = 'BLOCKING'
+--     AND speculative_retry = '99p';"
+describe emp;
+
+-- Insert
+INSERT INTO emp (emp_id,
+                 emp_name,
+                 emp_city,
+                 emp_phone,
+                 emp_sal)
+VALUES (1, 'ram', 'Hyderabad', 9848022338, 50000);
+
+INSERT INTO emp (emp_id, emp_name, emp_city,
+                 emp_phone, emp_sal)
+VALUES (2, 'robin', 'Hyderabad', 9848022339, 40000);
+
+INSERT INTO emp (emp_id, emp_name, emp_city,
+                 emp_phone, emp_sal)
+VALUES (3, 'rahman', 'Chennai', 9848022330, 45000);
+-- Show Table
+SELECT *
+FROM emp;
+
+--Update
+UPDATE emp
+SET emp_city='Delhi',
+    emp_sal=50000
+WHERE emp_id = 2;
+
+/*[
+  {
+    "emp_id": 1,
+    "emp_city": "Hyderabad",
+    "emp_name": "ram",
+    "emp_phone": 9848022338,
+    "emp_sal": 50000
+  },
+  {
+    "emp_id": 2,
+    "emp_city": "Delhi",
+    "emp_name": "robin",
+    "emp_phone": 9848022339,
+    "emp_sal": 50000
+  },
+  {
+    "emp_id": 3,
+    "emp_city": "Chennai",
+    "emp_name": "rahman",
+    "emp_phone": 9848022330,
+    "emp_sal": 45000
+  }
+]*/
+
+DELETE emp_sal
+FROM emp
+WHERE emp_id = 3;
+/*+------+---------+--------+----------+-------+
+|emp_id|emp_city |emp_name|emp_phone |emp_sal|
++------+---------+--------+----------+-------+
+|1     |Hyderabad|ram     |9848022338|50000  |
+|2     |Delhi    |robin   |9848022339|50000  |
+|3     |Chennai  |rahman  |9848022330|null   |
++------+---------+--------+----------+-------+
+*/
+
+--Create and Insert table
+CREATE TABLE data
+(
+    name  text PRIMARY KEY,
+    email list<text>
+);
+
+INSERT INTO data(name, email)
+VALUES ('ramu',
+        ['abc@gmail.com','cba@yahoo.com'])
+
+SELECT * FROM data;
+/* +----+----------------------------------+
+|name|email                             |
++----+----------------------------------+
+|ramu|['abc@gmail.com', 'cba@yahoo.com']|
++----+----------------------------------+
+*/
+
+
+--create Set and update
+CREATE TABLE data2
+(
+    name  text PRIMARY KEY,
+    phone set<varint>
+);
+
+INSERT INTO data2(name, phone)
+VALUES ('rahman', {9848022338,9848022339});
+
+SELECT * FROM data2;
+/*
+ +------+------------------------+
+|name  |phone                   |
++------+------------------------+
+|rahman|{9848022338, 9848022339}|
++------+------------------------+
+
+ */
+
+--Update Set
+UPDATE data2 SET phone = phone + {9848022330} where name = 'rahman';
+
+SELECT * FROM data2;
+/*
++------+------------------------------------+
+|name  |phone                               |
++------+------------------------------------+
+|rahman|{9848022330, 9848022338, 9848022339}|
++------+------------------------------------+
+ */
+
+-- create, update MAP
+CREATE TABLE data3 (name text PRIMARY KEY, address
+                         map<text, text>);
+
+DROP TABLE data3;
+
+INSERT INTO data3 (name, address) VALUES ('robin', {'home' : 'hyderabad' , 'office' : 'Delhi' } );
+
+SELECT * FROM data3;
+
+UPDATE data3 SET address = address+{'office':'mumbai'} WHERE name = 'robin';
+
+SELECT * FROM data3;
+
+//Time to live and timestamp usage
+SELECT * FROM data;
+
+ALTER TABLE data ADD (selo_temporal timestamp, tempo_de_vida timeuuid);
+
+// Within 30 seconds the data inserted is removed by TTL
+INSERT INTO data (name, email) VALUES ('bruno', ['brunolop50@gmail.com', 'brunorafaellopes@ua.pt']) USING TTL 30;
+
+SELECT * FROM data WHERE selo_temporal > '2023-10-01T00:00:00Z' AND selo_temporal < '2023-10-10T23:59:59Z';
+
+
+/*
+ +-----+----------------------------------------+
+|name |address                                 |
++-----+----------------------------------------+
+|robin|{'home': 'hyderabad', 'office': 'Delhi'}|
++-----+----------------------------------------+
+ */
