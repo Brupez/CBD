@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="jedis-5.0.0">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/CBD_1.5/out/production/CBD_1.5/lib/jedis-5.0.0.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

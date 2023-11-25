@@ -37,17 +37,19 @@ public class alinea_B {
                 outputFile("Your Name: ", pw, false);
                 input = sc.nextLine();
                 pw.println(input);
+
                 outputFile("How many orders : ", pw, false);
                 order = Integer.parseInt(sc.nextLine());
                 pw.println(order);
 
 
-                //In case name is empty break
+                //In case name is empty or order greater than limit => break
                 if (input.isEmpty() || order < 0) {
                     outputFile("Number of orders must be a positive number! Exiting", pw, true);
                     break;
                 } else if (order > LIMIT){
-                    outputFile("Order limit exceeded"\, pw, true);
+                    outputFile("Order limit exceeded", pw, true);
+                    break;
 
                 }
 

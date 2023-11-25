@@ -1,4 +1,4 @@
-package pt.ua.cbd.lab3.ex3;
+package pt.ua.cbd.lab3.Ex3_3;
 
 import com.datastax.oss.driver.api.core.CqlSession;
 import com.datastax.oss.driver.api.core.cql.ResultSet;

@@ -1,0 +1,61 @@
+cqlsh> CREATE KEYSPACE cbd WITH replication={'class':'SimpleStrategy', 'replication_factor':3};
+cqlsh> USE cbd;
+
+cqlsh:cbd> CREATE TABLE students
+       ... (
+       ...   nmec int,
+       ...   course ascii,
+       ...   name ascii,
+       ...   tel int,
+       ...   PRIMARY KEY (nmec, course)
+       ... );
+
+cqlsh:cbd> INSERT INTO students (nmec, name, course, tel) VALUES (92972, 'Goncalo Matos', 'LEI', 956325659);
+
+cqlsh:cbd> SELECT * FROM students;
+cqlsh:cbd> SELECT JSON * FROM students;
+
+cqlsh:cbd> INSERT INTO students (nmec, name, course, tel) VALUES (92973, 'Anabela Pereira', 'MIECT', 956365659);
+cqlsh:cbd> INSERT INTO students (nmec, name, course, tel) VALUES (92975, 'Carlos Jorge', 'LEI', 936365659);
+cqlsh:cbd> INSERT INTO students (nmec, name, course, tel) VALUES (92976, 'Margarida Lopes', 'MIECT', 956385659);
+
+cqlsh:cbd> SELECT * FROM students WHERE course='LEI' ALLOW FILTERING;
+cqlsh:cbd> SELECT * FROM students WHERE nmec=92972;
+
+cqlsh:cbd> CREATE TABLE students2
+       ... (
+       ...   course ascii,
+       ...   nmec int,
+       ...   name ascii,
+       ...   tel int,
+       ...   PRIMARY KEY (course, nmec)
+       ... );
+
+cqlsh:cbd> INSERT INTO students2 (nmec, name, course, tel) VALUES (92972, 'Goncalo Matos', 'LEI', 956325659);
+cqlsh:cbd> INSERT INTO students2 (nmec, name, course, tel) VALUES (92973, 'Anabela Pereira', 'MIECT', 956365659);
+cqlsh:cbd> INSERT INTO students2 (nmec, name, course, tel) VALUES (92975, 'Carlos Jorge', 'LEI', 936365659);
+cqlsh:cbd> INSERT INTO students2 (nmec, name, course, tel) VALUES (92976, 'Margarida Lopes', 'MIECT', 956385659);
+
+cqlsh:cbd> SELECT * FROM students2 WHERE course='LEI';
+cqlsh:cbd> SELECT * FROM students2 WHERE course='LEI' AND nmec=92972;
+
+cqlsh:cbd> ALTER TABLE students2 ADD yearBorn int;
+cqlsh:cbd> UPDATE students2 SET yearborn=2012 WHERE course='LEI' AND nmec=92972;
+cqlsh:cbd> UPDATE students2 SET yearborn=2015 WHERE course='LEI' AND nmec=92975;
+cqlsh:cbd> UPDATE students2 SET yearborn=2015 WHERE course='MIECT' AND nmec=92973;
+cqlsh:cbd> UPDATE students2 SET yearborn=2015 WHERE course='MIECT' AND nmec=92976;
+
+cqlsh:cbd> DELETE FROM students WHERE nmec=92972;
+
+cqlsh:cbd> CREATE FUNCTION printStudent ( nmec int, name ascii )     RETURNS NULL ON NULL INPUT     RETURNS ascii      LANGUAGE java      AS $$ return String.format("The student with nmec %d is called %s! ", nmec, name); $$;
+cqlsh:cbd> SELECT printStudent(nmec, name) FROM students;
+
+cqlsh:cbd> SELECT * FROM students2 WHERE course IN ('LEI', 'MIECT') GROUP BY course;
+cqlsh:cbd> SELECT * FROM students2 WHERE course IN ('LEI', 'MIECT') GROUP BY course, nmec;
+cqlsh:cbd> SELECT course, COUNT(nmec) FROM students2 WHERE course IN ('LEI', 'MIECT') GROUP BY course;
+
+
+
+
+
+
