@@ -1,0 +1,52 @@
+// NMEC: 68264
+
+//a)
+LOAD CSV WITH HEADERS FROM 'file:///resources/git_selection.csv' AS csvLine
+MERGE (p:Person {svn_id: csvLine.svn_id, name: csvLine.real_name})
+SET p.organization = csvLine.organization
+MERGE (pr:Project {name: csvLine.project_name})
+CREATE (p)-[r:WORKED_ON]->(pr)
+SET r.role_on_project=csvLine.role_on_project
+
+# 0. Carregue o conteudo do ficheiro `/resouces/git_selection.csv`.
+LOAD CSV ...
+
+
+# 1. Liste a informação de cada utilizador.
+MATCH (p:Person)
+RETURN p
+
+# 2. Liste o nome de cada utilizador.
+MATCH (p:Person)
+RETURN p.name
+
+# 3. Liste a informação de cada projeto, no qual tenha participado pelo menos um utilizador.
+MATCH (p:Person)-[:WORKED_ON]->(pr:Project)
+RETURN DISTINCT pr
+
+# 4. Liste os utilizadores e total de projetos em que cada um colabora.
+MATCH (p:Person)-[:WORKED_ON]->(pr:Project)
+RETURN DISTINCT p.name, count(pr)
+
+# 5. Liste os utilizadores e do total de projetos em que cada colabora ordenados por ordem decrescente do total.
+MATCH (p:Person)-[:WORKED_ON]->(pr:Project)
+RETURN DISTINCT p.name, count(pr)
+
+# 6. Liste projetos e total de membros em cada projeto.
+MATCH (p:Person)-[:WORKED_ON]->(pr:Project)
+RETURN DISTINCT pr.name, count(p) as numMembros
+ORDER BY numMembros DESC
+
+# 7. Liste projetos e total de membros com a role "Committer" em cada projeto.
+MATCH (p:Person)-[r:WORKED_ON]->(pr:Project)
+WHERE r.role_on_project="Committer"
+WITH pr.name as Projects, count(p   ) as numCommitters
+RETURN Projects, numCommitters
+
+# 8. Liste todos os utilizadores que participaram nos mesmo projetos do que o utilizador "atm" (id). Mostre os atributos: nome de "atm", nome utilizador 2, nome do projeto.
+MATCH (p1:Person)-[:WORKED_ON]->(pr:Project)<-[:WORKED_ON]-(p2:Person {svn_id: "atm"})
+RETURN p2.name, p1.name, pr.name
+
+# 9. Liste todos os utilizadores que participaram com a role "Committer" em projetos em que o utilizador "atm" (id1) participou com a role "PMC".
+MATCH (p:Person {svn_id: "atm"})-[r:WORKED_ON {role_on_project: "Committer"}]->(pr:Project)<-[r1:WORKED_ON {role_on_project: "PMC"}]-(p2:Person)
+RETURN p2.name
