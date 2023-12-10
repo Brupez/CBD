@@ -61,7 +61,7 @@ WHERE p1.name CONTAINS 'Jim'
 RETURN length(p)
 
 # 12. Que pessoas têm uma distância 2 para Jim Cash (a distância entre duas pessoas é o comprimento do caminho mais curto entre eles)?
-MATH path = shortestPath(
+MATCH path = shortestPath(
     jim:Person{name: "Jim Cash"})-[*..2]-(p2:Person))
 WHERE jim <> p2
 RETURN p2.name

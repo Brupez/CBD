@@ -2,14 +2,15 @@
 
 //a)
 LOAD CSV WITH HEADERS FROM 'file:///resources/git_selection.csv' AS csvLine
-MERGE (p:Person {svn_id: csvLine.svn_id, name: csvLine.real_name})
-SET p.organization = csvLine.organization
-MERGE (pr:Project {name: csvLine.project_name})
-CREATE (p)-[r:WORKED_ON]->(pr)
-SET r.role_on_project=csvLine.role_on_project
 
-# 0. Carregue o conteudo do ficheiro `/resouces/git_selection.csv`.
-LOAD CSV ...
+//Entities
+MERGE (p:Person {svn_id: csvLine.svn_id, name: csvLine.real_name})
+MERGE (o:Organization {name: csvLine.organization})
+MERGE (pr:Project {name: csvLine.project_name})
+
+//Relations
+MERGE (p)-[:WORKED_ON {role_on_project: csvLine.role_on_project}]->(pr)
+MERGE (p)-[:BELONGS_TO]-(o)
 
 
 # 1. Liste a informação de cada utilizador.
